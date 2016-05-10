@@ -1,0 +1,70 @@
+group 'uk.co.agilekatas.katas'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.7
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    integrationTest {
+        java {
+            srcDir 'src/integrationTest/java'
+        }
+        resources {
+            srcDir 'src/integrationTest/resources'
+        }
+        compileClasspath += main.output + test.output
+        runtimeClasspath += main.output + test.output
+    }
+}
+
+configurations {
+    integrationTestCompile.extendsFrom testCompile
+    integrationTestRuntime.extendsFrom testRuntime
+}
+
+idea {
+    module {
+        testSourceDirs += file('src/integrationTest/java')
+        scopes.TEST.plus += [configurations.integrationTestCompile]
+        scopes.TEST.plus += [configurations.integrationTestRuntime]
+    }
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.assertj:assertj-core:2.3.0'
+
+    integrationTestCompile 'info.cukes:cucumber-java:1.2.4'
+    integrationTestCompile 'info.cukes:cucumber-junit:1.2.4'
+}
+
+// Tasks
+task integrationTest(type: Test) {
+    group 'verification'
+    description 'Runs integration tests'
+    dependsOn assemble, compileIntegrationTestJava
+    mustRunAfter test
+    doLast {
+        javaexec {
+            main = "cucumber.api.cli.Main"
+            classpath = configurations.integrationTestRuntime +
+                    sourceSets.main.output +
+                    sourceSets.integrationTest.output
+            args = ['--plugin', "html:${reporting.baseDir}/${name}",
+                    '--plugin', "junit:${reporting.baseDir}/${name}/junit.xml",
+                    '--plugin', 'pretty',
+                    '--glue', 'uk.co.agilekatas.katas.tamagotchi', 'src/integrationTest/resources']
+        }
+    }
+    testClassesDir = sourceSets.integrationTest.output.classesDir
+    classpath = sourceSets.integrationTest.runtimeClasspath
+    outputs.upToDateWhen { false }
+}
+
+check.dependsOn integrationTest
