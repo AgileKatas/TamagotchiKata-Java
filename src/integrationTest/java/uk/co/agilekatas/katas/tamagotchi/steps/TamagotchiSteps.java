@@ -14,6 +14,8 @@ public class TamagotchiSteps {
 
   private int initialHunger;
   private int initialFullness;
+  private int initialHappiness;
+  private int initialTiredness;
 
   @Given("^I have a Tamagotchi$")
   public void given_i_have_a_tamagotchi() {
@@ -35,6 +37,22 @@ public class TamagotchiSteps {
   @And("^it's fullness is increased$")
   public void it_s_fullness_is_increased() {
     assertThat(tamagotchi.getFullness()).isGreaterThan(initialFullness);
+  }
+
+  @When("^I play with it$")
+  public void I_play_with_it() {
+    tamagotchi.play();
+  }
+
+  @Then("^it's happiness is increased$")
+  public void it_s_happiness_is_increased() {
+    assertThat(tamagotchi.getHappiness()).isGreaterThan(initialHappiness);
+
+  }
+
+  @And("^it's tiredness is increased$")
+  public void it_s_tiredness_is_increased() {
+    assertThat(tamagotchi.getTiredness()).isGreaterThan(initialTiredness);
   }
 
 }

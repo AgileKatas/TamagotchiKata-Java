@@ -7,7 +7,7 @@ import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
 
 @RunWith(Enclosed.class)
-public class TamagotchiTest {
+public class TamagotchiTests {
 
   public static class Feeding {
 
@@ -29,6 +29,30 @@ public class TamagotchiTest {
       tamagotchi.feed();
 
       assertThat(tamagotchi.getFullness()).isGreaterThan(initialFullness);
+    }
+
+  }
+
+  public static class Playing {
+
+    @Test
+    public void increasesHappiness() {
+      Tamagotchi tamagotchi = new Tamagotchi();
+      int initialHappiness = tamagotchi.getHappiness();
+
+      tamagotchi.play();
+
+      assertThat(tamagotchi.getHappiness()).isGreaterThan(initialHappiness);
+    }
+
+    @Test
+    public void increasesTiredness() {
+      Tamagotchi tamagotchi = new Tamagotchi();
+      int initialTiredness = tamagotchi.getTiredness();
+
+      tamagotchi.play();
+
+      assertThat(tamagotchi.getTiredness()).isGreaterThan(initialTiredness);
     }
 
   }
