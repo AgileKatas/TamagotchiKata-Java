@@ -32,6 +32,12 @@ public class Tamagotchi {
     fullness -= 1;
   }
 
+  public void tick() {
+    hunger += 1;
+    tiredness += 1;
+    happiness -= 1;
+  }
+
   public int getHunger() {
     return hunger;
   }

@@ -85,4 +85,38 @@ public class TamagotchiTests {
 
   }
 
+  public static class TimePassing {
+
+    @Test
+    public void increasesHunger() {
+      Tamagotchi tamagotchi = new Tamagotchi();
+      int initialHunger = tamagotchi.getHunger();
+
+      tamagotchi.tick();
+
+      assertThat(tamagotchi.getHunger()).isGreaterThan(initialHunger);
+    }
+
+    @Test
+    public void increasesTiredness() {
+      Tamagotchi tamagotchi = new Tamagotchi();
+      int initialTiredness = tamagotchi.getTiredness();
+
+      tamagotchi.tick();
+
+      assertThat(tamagotchi.getTiredness()).isGreaterThan(initialTiredness);
+    }
+
+    @Test
+    public void decreasesHappiness() {
+      Tamagotchi tamagotchi = new Tamagotchi();
+      int initialHappiness = tamagotchi.getHappiness();
+
+      tamagotchi.tick();
+
+      assertThat(tamagotchi.getHappiness()).isLessThan(initialHappiness);
+    }
+
+  }
+
 }

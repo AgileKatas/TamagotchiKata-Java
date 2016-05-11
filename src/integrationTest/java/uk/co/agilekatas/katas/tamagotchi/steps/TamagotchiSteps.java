@@ -77,4 +77,18 @@ public class TamagotchiSteps {
     assertThat(tamagotchi.getFullness()).isLessThan(initialFullness);
   }
 
+  @When("^time passes$")
+  public void time_passes() throws Throwable {
+    tamagotchi.tick();
+  }
+
+  @And("^it's hungriness is increased$")
+  public void it_s_hungriness_is_increased() throws Throwable {
+    assertThat(tamagotchi.getHunger()).isGreaterThan(initialHunger);
+  }
+
+  @And("^it's happiness is decreased$")
+  public void it_s_happiness_is_decreased() throws Throwable {
+    assertThat(tamagotchi.getHappiness()).isLessThan(initialHappiness);
+  }
 }
