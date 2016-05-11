@@ -71,4 +71,18 @@ public class TamagotchiTests {
 
   }
 
+  public static class Pooping {
+
+    @Test
+    public void decreasesFullness() {
+      Tamagotchi tamagotchi = new Tamagotchi();
+      int initialFullness = tamagotchi.getFullness();
+
+      tamagotchi.poop();
+
+      assertThat(tamagotchi.getFullness()).isLessThan(initialFullness);
+    }
+
+  }
+
 }

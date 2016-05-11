@@ -28,6 +28,10 @@ public class Tamagotchi {
     tiredness -= 1;
   }
 
+  public void poop() {
+    fullness -= 1;
+  }
+
   public int getHunger() {
     return hunger;
   }

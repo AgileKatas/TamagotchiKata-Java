@@ -66,4 +66,15 @@ public class TamagotchiSteps {
   public void it_s_tiredness_is_decreased() {
     assertThat(tamagotchi.getTiredness()).isLessThan(initialTiredness);
   }
+
+  @When("^I make it poop$")
+  public void I_make_it_poop() {
+    tamagotchi.poop();
+  }
+
+  @Then("^it's fullness is decreased$")
+  public void it_s_fullness_is_decreased() {
+    assertThat(tamagotchi.getFullness()).isLessThan(initialFullness);
+  }
+
 }
