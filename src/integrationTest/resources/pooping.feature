@@ -1,8 +1,8 @@
 Feature: Making Tamagotchi Poop
 
-  Scenario:
-  As a Tamagotchi owner
-  I want to make my Tamagotchi poop
+  Scenario: Tamagotchi can poop
+  As a Tamagotchi owner,
+  I want to make my Tamagotchi poop,
   So that it is more comfortable
 
     Given I have a Tamagotchi

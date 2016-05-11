@@ -1,8 +1,8 @@
 Feature: Playing With Tamagotchi
 
-  Scenario:
-  As a Tamagotchi owner
-  I want to play with my Tamagotchi
+  Scenario: Tamagotchi can be played with
+  As a Tamagotchi owner,
+  I want to play with my Tamagotchi,
   So that I can make it happier
 
     Given I have a Tamagotchi

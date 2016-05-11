@@ -1,8 +1,8 @@
 Feature: Changing Tamagotchi Needs Over Time
 
-  Scenario: 
-  As a Tamagotchi owner
-  I want my Tamagotchi's needs to change over time
+  Scenario: Tamagotchi needs change over time
+  As a Tamagotchi owner,
+  I want my Tamagotchi's needs to change over time,
   So that I have to look after it carefully
 
     Given I have a Tamagotchi

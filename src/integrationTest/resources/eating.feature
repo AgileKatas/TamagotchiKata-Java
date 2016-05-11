@@ -1,8 +1,8 @@
 Feature: Feeding Tamagotchi
 
-  Scenario:
-  As a Tamagotchi owner
-  I want to feed my Tamagotchi
+  Scenario: Tamagotchi can be fed
+  As a Tamagotchi owner,
+  I want to feed my Tamagotchi,
   So that I can satiate it's hunger
 
     Given I have a Tamagotchi

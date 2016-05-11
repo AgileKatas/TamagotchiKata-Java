@@ -1,8 +1,8 @@
 Feature: Putting Tamagotchi to Bed
 
-  Scenario:
-  As a Tamagotchi owner
-  I want to put my Tamagotchi to bed
+  Scenario: Tamagotchi can sleep
+  As a Tamagotchi owner,
+  I want to put my Tamagotchi to bed,
   So that I can refill it's energy
 
     Given I have a Tamagotchi
