@@ -24,6 +24,10 @@ public class Tamagotchi {
     tiredness += 1;
   }
 
+  public void putToBed() {
+    tiredness -= 1;
+  }
+
   public int getHunger() {
     return hunger;
   }
@@ -39,4 +43,5 @@ public class Tamagotchi {
   public int getHappiness() {
     return happiness;
   }
+
 }

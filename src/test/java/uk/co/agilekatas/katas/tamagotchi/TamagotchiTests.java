@@ -57,5 +57,18 @@ public class TamagotchiTests {
 
   }
 
+  public static class Sleeping {
+
+    @Test
+    public void decreasesTiredness() {
+      Tamagotchi tamagotchi = new Tamagotchi();
+      int initialTiredness = tamagotchi.getTiredness();
+
+      tamagotchi.putToBed();
+
+      assertThat(tamagotchi.getTiredness()).isLessThan(initialTiredness);
+    }
+
+  }
 
 }

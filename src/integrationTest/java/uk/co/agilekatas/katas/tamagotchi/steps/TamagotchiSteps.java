@@ -22,6 +22,8 @@ public class TamagotchiSteps {
     tamagotchi = new Tamagotchi();
     initialHunger = tamagotchi.getHunger();
     initialFullness = tamagotchi.getFullness();
+    initialHappiness = tamagotchi.getHappiness();
+    initialTiredness = tamagotchi.getTiredness();
   }
 
   @When("^I feed it$")
@@ -55,4 +57,13 @@ public class TamagotchiSteps {
     assertThat(tamagotchi.getTiredness()).isGreaterThan(initialTiredness);
   }
 
+  @When("^I put it to bed$")
+  public void I_put_it_to_bed() {
+    tamagotchi.putToBed();
+  }
+
+  @Then("^it's tiredness is decreased$")
+  public void it_s_tiredness_is_decreased() {
+    assertThat(tamagotchi.getTiredness()).isLessThan(initialTiredness);
+  }
 }
