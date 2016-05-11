@@ -2,40 +2,51 @@ package uk.co.agilekatas.katas.tamagotchi;
 
 public class Tamagotchi {
 
+  private static final int INITIAL_STATE = 5;
+  private static final int STATE_CHANGE_AMOUNT = 1;
+
   private int hunger;
   private int fullness;
   private int tiredness;
   private int happiness;
 
   public Tamagotchi() {
-    this.hunger = 5;
-    this.fullness = 5;
-    this.tiredness = 5;
-    this.happiness = 5;
+    this.hunger = INITIAL_STATE;
+    this.fullness = INITIAL_STATE;
+    this.tiredness = INITIAL_STATE;
+    this.happiness = INITIAL_STATE;
   }
 
   public void feed() {
-    hunger -= 1;
-    fullness += 1;
+    hunger = decrease(hunger);
+    fullness = increase(fullness);
   }
 
   public void play() {
-    happiness += 1;
-    tiredness += 1;
+    happiness = increase(happiness);
+    tiredness = increase(tiredness);
   }
 
   public void putToBed() {
-    tiredness -= 1;
+    tiredness = decrease(tiredness);
   }
 
   public void poop() {
-    fullness -= 1;
+    fullness = decrease(fullness);
   }
 
   public void tick() {
-    hunger += 1;
-    tiredness += 1;
-    happiness -= 1;
+    hunger = increase(hunger);
+    tiredness = increase(tiredness);
+    happiness = decrease(happiness);
+  }
+
+  private int increase(int state) {
+    return state + STATE_CHANGE_AMOUNT;
+  }
+
+  private int decrease(int state) {
+    return state - STATE_CHANGE_AMOUNT;
   }
 
   public int getHunger() {
